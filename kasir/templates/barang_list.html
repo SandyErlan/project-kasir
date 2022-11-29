@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="ca">
+            <div class="header">
+                <a class="btn btn-success" href="{% url 'barang_add' %}">TAMBAH BARANG</a>
+            </div>
+            <div class="body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Deskripsi</th>
+                            <th scope="col">Kategori</th>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in produk %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ p.nama }}</td>
+                            <td>{{ p.deskripsi }}</td>
+                            <td>{{ p.kategori }}</td>
+                            <td>{{ p.jumlah }}</td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="{% url 'data_update' p.id %}">UPDATE</a>
+                                <a onclick="alert('yakin mau di hapus?')" class="btn btn-danger btn-sm" href="{% url 'data_delete' p.id %}">DELETE</a>
+                            </td>>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+</div>
+{% endblock content %}
